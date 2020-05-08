@@ -1,0 +1,45 @@
+สรุป 14 คำสั่ง NPM ที่ใช้บ่อย สำหรับสาย Node.js
+
+• npm init
+เริ่มต้นใช้งาน และช่วยให้เราสร้าง และใส่รายละเอียดเกี่ยวกับโปรเจคของเรา (package.json)
+
+• npm install module_name
+ติดตั้ง module
+
+• npm install -g module_name
+ติดตั้ง module ในระดับ global
+
+• npm install module_name –save
+ติดตั้ง module และเพิ่มมันเข้าไปในไฟล์ package.json (ข้างใน dependencies)
+
+• npm install module_name –save-dev
+เหมือนกันกับข้างบน ติดตั้ง module และเพิ่มมันเข้าไปในไฟล์ package.json (ข้างใน dependencies) และบอกว่าจะนำมาช่วยในส่วนของนักพัฒนา
+
+• npm list
+แสดงรายการ modules ทั้งหมดที่ติดตั้งไปแล้วในโปรเจคของเรา
+
+• npm list -g
+แสดงรายการ modules ระดับ global ทั้งหมดที่ถูกติดตั้งบน OS ของเรา
+
+• npm remove module_name
+uninstall module ออกจากโปรเจคของเรา
+
+• npm remove -g module_name
+uninstall module ระดับ global
+
+• npm remove module_name –save
+uninstall module ออกจากโปรเจคของเรา พร้อมทั้งนำออกจาก attribute dependencies ด้วย (ในไฟล์ package.json)
+
+• npm remove module_name –save-dev
+เหมือนกันกับด้านบน uninstall module ออกจากโปรเจคของเรา พร้อมทั้งนำออกจาก attribute dependencies ด้วย (ในไฟล์ package.json)
+
+• npm update module_name
+update เวอร์ชัน module ให้ใหม่ล่าสุด
+
+• npm update -g module_name
+update เวอร์ชัน module ให้ใหม่ล่าสุด ในระดับ global
+
+• npm -v
+แสดงเวอร์ชันปัจจุบันของ npm
+
+ป.ล. module_name คือ ชื่อ module/library ที่เราต้องการติดตั้งครับ

@@ -1,0 +1,38 @@
+##### port in container is 172.17.0.2 #####
+
+#elasticsearch 
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+
+#redis
+docker pull redis
+docker run --name my-redis-container -p 127.0.0.1:6379:6379 -d redis
+
+#postgres
+docker run --name some-postgres -p 127.0.0.1:5432:5432 -e POSTGRES_PASSWORD=mandarinkb -d postgres 
+
+#mysql
+docker pull mysql
+docker run --name mysql-standalone -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=mandarinkb -d mysql
+
+#mariadb
+docker pull mariadb:10.3
+docker run --name mariadb-standalone -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=mandarinkb -d mariadb
+
+#portainer
+docker volume create portainer_data
+docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+#mongodb
+docker pull mongo:4.2
+docker run --name mongodb-v4.2 -p 127.0.0.1:27017:27017 -d mongo:4.2
+
+
+#check port in container
+docker container inspect --format '{{.NetworkSettings.IPAddress}}'  ตามด้วยชื่อcontainerเช่น mysql
+
+# log
+docker logs -f  ตามด้วย id container
+
+
+

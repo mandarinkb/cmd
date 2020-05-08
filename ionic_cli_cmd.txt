@@ -1,0 +1,29 @@
+++npm install++
+npm install -g ionic@4.7.1  // or delete npm uninstall -g ionic
+npm install -g cordova  // or delete npm uninstall -g cordova
+npm install -g cordova-res
+
+//graph
+npm install chart.js --save
+++
+++create project++
+ionic start myapp      //myapp is name project
+
+++
+
+ionic generate
+ionic generate page
+ionic generate page contact
+ionic generate component contact/form
+ionic generate component login-form --change-detection=OnPush
+ionic generate directive ripple --skip-import
+ionic generate service api/user
+#
+npm install
+ionic serve -l
+#
+ionic cordova run android --livereload 
+ionic cordova build android
+
+#path androidsdk
+C:\Users\MandariN\AppData\Local\Android\Sdk

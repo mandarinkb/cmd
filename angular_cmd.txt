@@ -1,0 +1,17 @@
+-- create component --
+ng g c name_component
+(กรณีอยู่ในfolder ng g c name_folder/name_component )
+
+-- create service.ts --
+ng g s name_service
+(กรณีอยู่ในfolder  ng g s name_folder/name_service )
+
+-- create model.ts --
+ng g cl name_model --type=model
+(กรณีอยู่folder ng g cl name_folder/name_model --type=model )
+
+#build
+ng build --prod
+
+--icons--
+https://fontawesome.com/v4.7.0/icons/
