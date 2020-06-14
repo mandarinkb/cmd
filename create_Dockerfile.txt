@@ -1,0 +1,56 @@
+====การเขียน Docker File====
+เน้นเขียนเพื่อให้ทำงานตามลำดับขั้นตอน ก่อน-หลัง
+
+FROM [--platform=<platform>] <image> [AS <name>]
+“ FROM ” → คำสั่งเพื่อเรียกใช้ base image ที่จะมาเป็นสภาพแวดล้อมหลักในการทำงานสำหรับโปรเจคเรา
+
+WORKDIR /path/to/workdir
+“ WORKDIR ” → คำสั่งเพื่อกำหนด Directory สำหรับการทำงานเพื่อให้คำสั่งอื่นๆที่เราจะใช้อย่างเช่น RUN, COPY และ อื่นๆ ให้ไปเริ่มต้นทำงานที่ Directory นั้น
+
+COPY <src> <dest>
+“ COPY ” → คำสั่งเพื่อการคัดลอกไฟล์ต่างๆจากที่หนึ่ง ไปไว้ยังที่ ที่เราต้องการ
+
+RUN <command>
+“ RUN ” → คำสั่งเพื่อการดำเนินการคำสั่งที่ต้องการ
+
+ARG <name>[=<value>]
+"ARG" --> คำสั่งเพื่อระบุตัวแปรที่จะใช้ในการ build 
+Ex. ARG user=admin
+
+ADD <src> <dest>
+"ADD" --> คำสั่งเพื่อการเพิ่มไฟล์ที่ต้องการเข้ามาในโฟลเดอร์ที่กำหนด 
+Ex. ADD someFile.js /mydir/
+
+EXPOSE <port>
+"EXPOSE" --> คำสั่งเพื่อกำหนด port ให้ Docker ที่จะให้เห็นระหว่างผู้สร้างกับผู้ใช้งาน
+Ex. EXPOSE 80
+
+CMD <command> กับ ENTRYPOINT <command>
+"CMD", "ENTRYPOINT" --> คำสั่งเพื่อการสั่งให้ทำงานบางสิ่งที่เราต้องการ
+Ex. CMD "npm run serve"
+Ex. ENTRYPOINT "npm run serve"
+
+VOLUME ["/dataPath"]
+"VOLUME" --> คำสั่งเพื่อการกำหนด directory path สำหรับเก็บไฟล์ที่เราต้องการ
+Ex. VOLUME /myVol
+
+ENV <key>=<value>
+"ENV" --> คำสั่งเพื่อการกำหนดค่าตัวแปรสำหรับสภาพแวดล้อมในการทำงาน
+Ex. ENV API_ENDPOINT=https://api.website.com/
+
+ONBUILD [INSTRUCTION]
+"ONBUILD" --> คำสั่งเพื่อการกำหนดการทำงาน โดยที่จะทำงานเฉพาะเมื่อถูกเรียกใช้เป็น base image เท่านั้น
+Ex. ONBUILD ADD . /app/src
+
+LABEL <key>=<value> <key>=<value>
+"LABEL" --> คำสั่งเพื่อการกำหนด หรือสร้าง metadata ให้กับ Image
+Ex. LABEL version="1.0" "description": "This is description"
+
+HEALTHCHECK [OPTIONS] CMD command
+"HEALTHCHECK" --> คำสั่งเพื่อเช็คสภาพการทำงานของ container (ล่ม หรือ ปกติ)
+Ex. HEALTHCHECK --interval=5m --timeout=3s 
+      CMD curl -f http://localhost:5000/ || exit 1
+
+STOPSIGNAL signal
+"STOPSIGNAL" --> คำสั่งเพื่อการหยุดการทำงานของ container
+Ex. STOPSIGNAL anyString
