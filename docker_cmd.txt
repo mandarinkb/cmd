@@ -4,6 +4,11 @@
 docker pull docker.elastic.co/elasticsearch/elasticsearch:7.5.1
 docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.5.1
 
+sudo mkdir -p $PWD/elasticsearch/data
+sudo chmod 777 -R $PWD/elaticsearch/data
+docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -v $PWD/elasticsearch/data:/usr/share/elasticsearch/data -e "discovery.type=single-node" --name elasticsearch docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+
+
 #redis
 docker pull redis
 docker run --name my-redis-container -p 127.0.0.1:6379:6379 -d redis
@@ -18,6 +23,7 @@ docker run --name mysql-standalone -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD
 #mariadb
 docker pull mariadb:10.3
 docker run --name mariadb-standalone -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=mandarinkb -d mariadb
+docker run --name mariadb-standalone -p 3306:3306 -v ~/docker-persist-data/mariadb/mdb1:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mandarinkb -d mariadb:10.3
 
 #portainer
 docker volume create portainer_data
