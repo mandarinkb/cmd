@@ -24,6 +24,15 @@ ionic serve -l
 #
 ionic cordova run android --livereload 
 ionic cordova build android
+ionic cordova build android --prod --release
 
 #path androidsdk
 C:\Users\MandariN\AppData\Local\Android\Sdk
+
+#fix ionic change icon logo and splash
+
+Step 1: install cordova-res tool
+$ npm install -g cordova-res
+
+Step2: generate the resources
+$ cordova-res

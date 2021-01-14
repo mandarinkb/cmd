@@ -3,6 +3,8 @@
 #elasticsearch 
 docker pull docker.elastic.co/elasticsearch/elasticsearch:7.5.1
 docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+docker run -p 9200:9200 -p 9300:9300 -v ~/docker-persist-data/elasticsearch/edb1:/usr/share/elasticsearch/data -e "discovery.type=single-node" -e "discovery.type=single-node" -e "bootstrap.memory_lock=true" docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+                                                                                :/usr/share/elasticsearch/data
 
 sudo mkdir -p $PWD/elasticsearch/data
 sudo chmod 777 -R $PWD/elaticsearch/data
@@ -35,10 +37,12 @@ docker run --name mongodb-v4.2 -p 127.0.0.1:27017:27017 -d mongo:4.2
 
 
 #check port in container
-docker container inspect --format '{{.NetworkSettings.IPAddress}}'  ตามด้วยชื่อcontainerเช่น mysql
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ตามด้วยชื่อcontainerเช่น mysql
 
 # log
 docker logs -f  ตามด้วย id container
+
+
 
 
 
