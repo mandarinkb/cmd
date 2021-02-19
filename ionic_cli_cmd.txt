@@ -36,3 +36,20 @@ $ npm install -g cordova-res
 
 Step2: generate the resources
 $ cordova-res
+
+===Android Play Store Deployment===
+(1) Generating a release build of an app
+ionic cordova build android --prod --release
+
+#Signing an APK
+(2) go to java path and run this cmd
+# C:\Program Files\Java\jdk1.8.0_212\bin (use cmd run as admin)
+keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+
+(3) copy file apk to java path and run this cmd (use cmd run as admin)
+# C:\Program Files\Java\jdk1.8.0_212\bin
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore app-release-unsigned.apk alias_name
+
+(4) copy file apk from(3) to Android sdk path and run this cmd (use cmd run as admin)
+# C:\Users\MandariN\AppData\Local\Android\Sdk\build-tools\29.0.3
+zipalign -v 4 app-release-unsigned.apk app.apk
