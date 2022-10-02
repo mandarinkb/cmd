@@ -2,7 +2,7 @@
 sudo docker build -t {container-name}:{tag} .
 
 #คำสั่งเข้า cmd container
-sudo docker exec -it {container name} share
+sudo docker exec -it {container name} sh
 
 #คำสั่งเข้าไปดู folder ใน images
 sudo docker run -it --rm {images name} sh
